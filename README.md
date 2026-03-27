@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://paperoffice.ai/images/logos/paperoffice_ai_logo.svg" alt="PaperOffice AI" width="120">
+<img src="assets/logo.png" alt="PaperOffice AI" width="120">
 
 # PaperOffice MCP Setup
 
