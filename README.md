@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://paperoffice.ai/images/logos/logo_paperoffice_ai.webp" alt="PaperOffice AI" width="120">
+<img src="https://paperoffice.ai/images/logos/paperoffice_ai_logo.svg" alt="PaperOffice AI" width="120">
 
 # PaperOffice MCP Setup
 
@@ -86,6 +86,16 @@ https://mcp.paperoffice.ai/mcp
 - **Transport**: Streamable HTTP
 - **Protocol**: MCP v3.0
 
+## Alternative: Paste Postman URL into AI
+
+Don't need MCP? Just paste this URL into any AI assistant and start coding:
+
+```
+https://api.paperoffice.ai/dev/docs/postman
+```
+
+The AI reads the full API documentation and writes the code for you. Zero SDKs needed.
+
 ## Get Your API Key
 
 1. Go to [app.paperoffice.ai](https://app.paperoffice.ai)
@@ -107,9 +117,9 @@ Once connected, ask your AI assistant things like:
 ## Resources
 
 - [Full MCP Documentation](https://paperoffice.ai/en/developer/mcp/)
-- [Postman Collection (357+ endpoints)](https://api.paperoffice.ai/dev/docs/postman)
+- [Postman Collection — paste into AI](https://api.paperoffice.ai/dev/docs/postman)
 - [AI Cookbook — Recipes & Prompts](https://paperoffice.ai/en/developer/cookbook/)
-- [API Platform](https://api.paperoffice.ai)
+- [REST API](https://api.paperoffice.ai)
 
 ## License
 
