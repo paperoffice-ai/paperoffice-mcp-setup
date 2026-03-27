@@ -91,7 +91,7 @@ https://mcp.paperoffice.ai/mcp
 Don't need MCP? Just paste this URL into any AI assistant and start coding:
 
 ```
-https://api.paperoffice.ai/dev/docs/postman
+https://api.paperoffice.ai/latest/docs/postman
 ```
 
 The AI reads the full API documentation and writes the code for you. Zero SDKs needed.
@@ -117,7 +117,7 @@ Once connected, ask your AI assistant things like:
 ## Resources
 
 - [Full MCP Documentation](https://paperoffice.ai/en/developer/mcp/)
-- [Postman Collection — paste into AI](https://api.paperoffice.ai/dev/docs/postman)
+- [Postman Collection — paste into AI](https://api.paperoffice.ai/latest/docs/postman)
 - [AI Cookbook — Recipes & Prompts](https://paperoffice.ai/en/developer/cookbook/)
 - [REST API](https://api.paperoffice.ai)
 
