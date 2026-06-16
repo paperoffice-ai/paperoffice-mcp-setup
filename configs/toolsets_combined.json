@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "paperoffice": {
+      "url": "https://mcp.paperoffice.ai/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY",
+        "X-MCP-Toolsets": "document-ai,workflow-ai"
+      }
+    }
+  }
+}
