@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "paperoffice-document-ai": {
+      "url": "https://mcp.paperoffice.ai/mcp-document-ai",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    },
+    "paperoffice-workflow-ai": {
+      "url": "https://mcp.paperoffice.ai/mcp-workflow-ai",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    },
+    "paperoffice-full": {
+      "url": "https://mcp.paperoffice.ai/mcp-full",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
