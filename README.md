@@ -36,6 +36,29 @@ No prompt engineering, no API code — the model picks the right PaperOffice too
 
 ---
 
+## See it in action
+
+<div align="center">
+
+<a href="https://paperoffice.ai/en/ai-blog-insights-document-automation/claude-fable-5-paperoffice-mcp-dms-agentic/">
+  <img src="https://paperoffice.ai/images/blog/mcp-fable5-hero.gif" alt="Claude Fable 5 + PaperOffice MCP DMS — agentic document work" width="720" />
+</a>
+
+*Claude Fable 5 + PaperOffice MCP DMS — agentic document work. [Watch the full guide →](https://paperoffice.ai/en/ai-blog-insights-document-automation/claude-fable-5-paperoffice-mcp-dms-agentic/)*
+
+</div>
+
+Four real workflows with Claude — under 30 seconds each. Click a card for the deep-dive with prompts and tool lists:
+
+| | Use case | Watch & read |
+|---|----------|--------------|
+| 📊 | **Month-end invoices** — open items across every workspace, with totals and overdue flags | [![Month-end invoices](https://paperoffice.ai/images/blog/mcp-invoice-month-end.webp)](https://paperoffice.ai/en/ai-blog-insights-document-automation/mcp-month-end-invoices-claude-paperoffice/) |
+| 📥 | **Overnight inbox** — capture, classify, flag duplicates and expiring contracts before you wake up | [![Overnight inbox](https://paperoffice.ai/images/blog/mcp-inbox-automation.webp)](https://paperoffice.ai/en/ai-blog-insights-document-automation/mcp-inbox-automation-overnight-claude/) |
+| 📱 | **Mobile contract lookup** — signed date, terms, page reference from your phone in seconds | [![Mobile contract lookup](https://paperoffice.ai/images/blog/mcp-mobile-contract-search.webp)](https://paperoffice.ai/en/ai-blog-insights-document-automation/mcp-mobile-contract-search-claude-dms/) |
+| 📈 | **Spend dashboard** — from 300 invoices to a board-ready dashboard in one prompt | [![Spend dashboard](https://paperoffice.ai/images/blog/mcp-spending-dashboard.webp)](https://paperoffice.ai/en/ai-blog-insights-document-automation/mcp-spending-dashboard-invoices-claude/) |
+
+---
+
 ## 60-second setup
 
 ### 1 · Get a token
