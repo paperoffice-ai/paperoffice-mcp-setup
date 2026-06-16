@@ -7,7 +7,7 @@
 **Give your AI assistant access to your documents — in plain language, in under 60 seconds.**
 
 Search, read, OCR, classify, extract, sign and analyse documents straight from
-Claude, Cursor, ChatGPT or Windsurf. No SDK, no boilerplate, no local install.
+Claude, Claude Cowork, Cursor, ChatGPT or Windsurf. No SDK, no boilerplate, no local install.
 
 [![Model Context Protocol](https://img.shields.io/badge/Model_Context_Protocol-ready-2563eb)](https://paperoffice.ai/en/developer/mcp/)
 [![MCP tools](https://img.shields.io/badge/MCP_tools-350%2B-7c3aed)](https://paperoffice.ai/en/developer/mcp/)
@@ -44,34 +44,22 @@ Sign up free at **[app.paperoffice.ai](https://app.paperoffice.ai)** → **Setti
 
 ### 2 · Paste one URL into your client
 
-**Claude Desktop** (OAuth — no key needed) — [`configs/claude_desktop_config.json`](configs/claude_desktop_config.json)
+**Full DMS power** (recommended for Claude, Claude Cowork, Claude Code) — [`configs/dms_mcp.json`](configs/dms_mcp.json)
 
 ```json
 {
   "mcpServers": {
     "paperoffice": {
-      "url": "https://mcp.paperoffice.ai/claude"
-    }
-  }
-}
-```
-
-**Cursor** — copy [`configs/cursor_mcp.json`](configs/cursor_mcp.json) to `.cursor/mcp.json`
-
-```json
-{
-  "mcpServers": {
-    "paperoffice": {
-      "url": "https://mcp.paperoffice.ai/cursor",
+      "url": "https://mcp.paperoffice.ai/dms",
       "headers": { "Authorization": "Bearer YOUR_API_KEY" }
     }
   }
 }
 ```
 
-**Windsurf** — same as Cursor, copy [`configs/windsurf_mcp_config.json`](configs/windsurf_mcp_config.json) to `~/.codeium/windsurf/mcp_config.json`.
+**Claude Desktop with OAuth** (no key in file) — [`configs/claude_desktop_config.json`](configs/claude_desktop_config.json) uses `/claude`, an alias of `/dms`.
 
-**ChatGPT / OpenAI MCP** — [`configs/openai_mcp.json`](configs/openai_mcp.json) (`/openai`).
+**Everything** (all 350+ tools across every module) — [`configs/mcp_full.json`](configs/mcp_full.json) → `/mcp-full`.
 
 ### 3 · Ask away
 
@@ -79,26 +67,44 @@ That's it — your AI now works with your documents.
 
 ---
 
-## Which URL should I use?
+## Choose your scope — you decide, not your client
 
-Each client maps to a curated tool profile, so you only expose what you need.
+**Any client can use any URL.** The paths below are convenience profiles, not limits:
+go full from day one, or narrow the surface for tool-limited clients or read-safety.
 
-| Your client | URL | Tools | Auth |
-|-------------|-----|------:|------|
-| **Claude Desktop** | `https://mcp.paperoffice.ai/claude` | 151 | OAuth 2.1 or Bearer |
-| **Claude Code** | `https://mcp.paperoffice.ai/dms` | 151 | Bearer |
-| **Cursor IDE** | `https://mcp.paperoffice.ai/cursor` | 37 | Bearer |
-| **Windsurf** | `https://mcp.paperoffice.ai/cursor` | 37 | Bearer |
-| **ChatGPT / OpenAI** | `https://mcp.paperoffice.ai/openai` | ~112 | Bearer or OAuth |
-| **Read-only default** | `https://mcp.paperoffice.ai/mcp` | 37 | Bearer |
-| **Power / full surface** | `https://mcp.paperoffice.ai/mcp-full` | 350+ | Bearer |
-| **Strict tool budget** | `https://mcp.paperoffice.ai/mcp-fast` | 25 | Bearer |
+| I want… | URL | Tools | Good for |
+|---------|-----|------:|----------|
+| **Everything** | `https://mcp.paperoffice.ai/mcp-full` | 350+ | Power users, agents, migration |
+| **Full headless DMS** | `https://mcp.paperoffice.ai/dms` | 151 | Claude, Claude Cowork, Claude Code |
+| **Document AI + Workflow** | `https://mcp.paperoffice.ai/openai` | ~112 | ChatGPT / OpenAI MCP |
+| **Read-safe (no deletes)** | `https://mcp.paperoffice.ai/cursor` | 37 | Cursor / Windsurf while coding |
+| **Minimal budget** | `https://mcp.paperoffice.ai/mcp-fast` | 25 | Clients with a hard tool cap |
 
-**Module paths** for explicit scopes:
-`https://mcp.paperoffice.ai/mcp-document-ai` (~95 tools) ·
-`https://mcp.paperoffice.ai/mcp-workflow-ai` (~56 tools)
+**Aliases & modules:**
+`https://mcp.paperoffice.ai/claude` = alias of `/dms` (OAuth-friendly for Claude Desktop) ·
+`https://mcp.paperoffice.ai/mcp` = same read-safe scope as `/cursor` ·
+`https://mcp.paperoffice.ai/mcp-document-ai` (~95) ·
+`https://mcp.paperoffice.ai/mcp-workflow-ai` (~56) for explicit single-module scopes.
+
+> **Why scopes at all?** Fewer tools = faster, more accurate tool-selection by the model,
+> and some clients enforce a tool-count cap. A read-safe profile (`/cursor`) prevents
+> accidental deletes while coding. None of this limits what PaperOffice can do — switch
+> to `/dms` or `/mcp-full` anytime for the full surface.
 
 Ready-made config files for every profile are in [`configs/`](configs/).
+
+---
+
+## Per-client quick reference
+
+| Client | Suggested start | Want more? |
+|--------|-----------------|-----------|
+| **Claude Desktop** | `/claude` (OAuth, 151) | `/mcp-full` for all 350+ |
+| **Claude Cowork / Claude Code** | `/dms` (151, full DMS) | `/mcp-full` for all modules |
+| **Cursor / Windsurf** | `/cursor` (37, read-safe) | `/dms` or `/mcp-full` for write + everything |
+| **ChatGPT / OpenAI MCP** | `/openai` (~112) | `/mcp-full` for all 350+ |
+
+These are starting points — change the URL whenever your task needs a different scope.
 
 ---
 
