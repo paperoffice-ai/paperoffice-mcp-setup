@@ -1,50 +1,83 @@
-<div align="center">
-
-<img src="assets/logo.png" alt="PaperOffice AI" width="120">
-
 # PaperOffice MCP Setup
 
-**Connect 357+ AI Tools to your IDE in 30 seconds**
+**Connect 350+ MCP tools to Claude, Cursor, ChatGPT or Windsurf in under 60 seconds.**
 
-Claude Desktop · Cursor · Windsurf · any MCP client
-
-</div>
+Marketing / copy-paste configs only — the live MCP server runs at [mcp.paperoffice.ai](https://mcp.paperoffice.ai).  
+Canonical product docs: [paperoffice.ai/en/developer/mcp/](https://paperoffice.ai/en/developer/mcp/)
 
 ---
 
 ## What is this?
 
-[PaperOffice AI](https://paperoffice.ai) provides a remote MCP (Model Context Protocol) server with **357+ AI-powered tools** for document processing, OCR, IDP, e-signatures, knowledge graphs, and more.
+[PaperOffice AI](https://paperoffice.ai) provides a **remote** MCP (Model Context Protocol) server — no npm, no Docker, no local install.
 
-This repo contains **ready-to-use config files** for all major MCP clients. No local installation needed — just copy, paste, connect.
+| Metric | Count | Notes |
+|--------|------:|-------|
+| **MCP tools (full profile)** | **350+** | `/mcp-full` — all MCP-enabled tools |
+| **Headless DMS profile** | **151** | `/dms` and `/claude` (alias) |
+| **REST API endpoints** | **357+** | Separate from MCP — use [Postman](https://api.paperoffice.ai/latest/docs/postman) |
+| **Cursor / read-only** | **37** | `/cursor` or `/mcp` |
+| **ChatGPT profile** | **~112** | `/openai` — Document AI + Workflow AI |
+| **Fast profile** | **25** | `/mcp-fast` — minimal tool budget |
+
+This repository contains **ready-to-use JSON configs** for major MCP clients.
+
+---
+
+## Quick pick — which URL?
+
+| Your client | Recommended URL | Tools | Auth |
+|-------------|-----------------|------:|------|
+| **Claude Desktop** | `https://mcp.paperoffice.ai/claude` | 151 | OAuth 2.1 (no key in config) or Bearer |
+| **Claude Code** | `https://mcp.paperoffice.ai/dms` | 151 | Bearer token |
+| **Cursor IDE** | `https://mcp.paperoffice.ai/cursor` | 37 | Bearer token |
+| **Windsurf** | `https://mcp.paperoffice.ai/cursor` | 37 | Bearer token |
+| **ChatGPT / OpenAI MCP** | `https://mcp.paperoffice.ai/openai` | ~112 | Bearer or OAuth |
+| **Read-only default** | `https://mcp.paperoffice.ai/mcp` | 37 | Bearer token |
+| **Power / migration** | `https://mcp.paperoffice.ai/mcp-full` | 350+ | Bearer token |
+| **Strict tool budget** | `https://mcp.paperoffice.ai/mcp-fast` | 25 | Bearer token |
+
+**Module paths (explicit scopes):**
+
+- `https://mcp.paperoffice.ai/mcp-document-ai` — lighter Document AI (~95 tools)
+- `https://mcp.paperoffice.ai/mcp-workflow-ai` — Workflow AI (~56 tools)
+
+---
 
 ## Setup
 
-### Claude Desktop
+### 1. Get a Bearer token
 
-Copy `configs/claude_desktop_config.json` into your Claude Desktop settings, or add this to your existing config:
+1. Sign up at [app.paperoffice.ai](https://app.paperoffice.ai)
+2. **Settings → API → Generate token** (`po_ut_*` or session token)
+
+### 2. Claude Desktop (OAuth — recommended)
+
+Copy [`configs/claude_desktop_config.json`](configs/claude_desktop_config.json) into Claude Desktop MCP settings:
 
 ```json
 {
   "mcpServers": {
     "paperoffice": {
-      "url": "https://mcp.paperoffice.ai/mcp"
+      "url": "https://mcp.paperoffice.ai/claude"
     }
   }
 }
 ```
 
-Claude Desktop uses **automatic OAuth 2.1** — no API key needed. You will be prompted to authorize on first use.
+Claude Desktop uses **automatic OAuth 2.1** — you authorize in the browser on first connect. No API key in the file.
 
-### Cursor
+For **Claude Code** with Bearer token, use [`configs/claude_code_bearer.json`](configs/claude_code_bearer.json) (`/dms`).
 
-Copy `configs/cursor_mcp.json` to `.cursor/mcp.json` in your project root:
+### 3. Cursor
+
+Copy [`configs/cursor_mcp.json`](configs/cursor_mcp.json) to `.cursor/mcp.json` in your project (or global Cursor MCP settings):
 
 ```json
 {
   "mcpServers": {
     "paperoffice": {
-      "url": "https://mcp.paperoffice.ai/mcp",
+      "url": "https://mcp.paperoffice.ai/cursor",
       "headers": {
         "Authorization": "Bearer YOUR_API_KEY"
       }
@@ -53,74 +86,91 @@ Copy `configs/cursor_mcp.json` to `.cursor/mcp.json` in your project root:
 }
 ```
 
-Replace `YOUR_API_KEY` with your Bearer token from [app.paperoffice.ai](https://app.paperoffice.ai).
+Replace `YOUR_API_KEY` with your token from [app.paperoffice.ai](https://app.paperoffice.ai).
 
-### Windsurf
+### 4. Windsurf
 
-Copy `configs/windsurf_mcp_config.json` to `~/.codeium/windsurf/mcp_config.json`:
+Copy [`configs/windsurf_mcp_config.json`](configs/windsurf_mcp_config.json) to `~/.codeium/windsurf/mcp_config.json` — same format as Cursor (`/cursor`).
 
-```json
-{
-  "mcpServers": {
-    "paperoffice": {
-      "url": "https://mcp.paperoffice.ai/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR_API_KEY"
-      }
-    }
-  }
-}
-```
+### 5. ChatGPT / OpenAI MCP
 
-Same config format as Cursor. Replace `YOUR_API_KEY` with your token.
+Use [`configs/openai_mcp.json`](configs/openai_mcp.json) — URL `https://mcp.paperoffice.ai/openai`.
 
-### Other MCP Clients
+### 6. Additional profiles
 
-Any MCP-compatible client can connect to:
+| File | Purpose |
+|------|---------|
+| [`dms_mcp.json`](configs/dms_mcp.json) | Canonical headless DMS (`/dms`, 151 tools) |
+| [`mcp_readonly.json`](configs/mcp_readonly.json) | Read-only `/mcp` (37 tools, same scope as `/cursor`) |
+| [`mcp_fast.json`](configs/mcp_fast.json) | Minimal `/mcp-fast` (25 tools) |
+| [`mcp_full.json`](configs/mcp_full.json) | Full surface `/mcp-full` (350+ tools) |
+| [`advanced_modules.json`](configs/advanced_modules.json) | Split Document AI + Workflow AI + full |
+| [`toolsets_combined.json`](configs/toolsets_combined.json) | Custom toolsets via `X-MCP-Toolsets` header |
 
-```
-https://mcp.paperoffice.ai/mcp
-```
+---
 
-- **Auth**: Bearer token (header `Authorization: Bearer YOUR_API_KEY`)
-- **Transport**: Streamable HTTP
-- **Protocol**: MCP v3.0
+## Transport & protocol
 
-## Alternative: Paste Postman URL into AI
+- **Transport:** Streamable HTTP (remote MCP)
+- **Base host:** `mcp.paperoffice.ai`
+- **Auth:** Bearer `Authorization: Bearer <token>` or OAuth 2.1 (Claude Desktop)
+- **EU hosting:** GDPR-aligned processing in own Tier III data centres (ES + DE)
 
-Don't need MCP? Just paste this URL into any AI assistant and start coding:
+---
+
+## Alternative: REST without MCP
+
+Paste this URL into any AI assistant for full REST API docs:
 
 ```
 https://api.paperoffice.ai/latest/docs/postman
 ```
 
-The AI reads the full API documentation and writes the code for you. Zero SDKs needed.
+Or use the LLM corpora:
 
-## Get Your API Key
+- Marketing: [paperoffice.ai/llms.txt](https://paperoffice.ai/llms.txt)
+- API: [api.paperoffice.ai/latest/docs/llms.txt](https://api.paperoffice.ai/latest/docs/llms.txt)
 
-1. Go to [app.paperoffice.ai](https://app.paperoffice.ai)
-2. Create a free account
-3. Generate a Bearer token in the API settings
+---
 
-## What can you do?
+## What can you ask?
 
-Once connected, ask your AI assistant things like:
+Once connected, try:
 
 - *"Extract all data from this invoice"*
 - *"OCR this scanned document"*
 - *"Classify these 50 documents"*
-- *"Split this 200-page PDF by document type"*
+- *"List unpaid invoices across all workspaces"*
 - *"Search my knowledge base for GDPR policies"*
 
-357+ tools across Document AI, OCR, IDP, Automation, Agents, Security, Analytics, and more.
+---
+
+## Migrating older setups
+
+| Legacy | Use instead |
+|--------|-------------|
+| `https://mcp.paperoffice.ai/mcp` as only URL | `/claude` or `/dms` for full DMS; `/cursor` for IDE |
+| `/mcp-headless` | `/mcp-document-ai` (lighter) or `/dms` (full) |
+| `/sse` endpoints | `/claude`, `/cursor`, `/dms` — Streamable HTTP |
+| Expecting 357 MCP tools | **357+ = REST API**; **350+ = MCP** at `/mcp-full` |
+
+---
+
+## MCP Registry (draft)
+
+[`server.json`](server.json) is prepared for the [Official MCP Registry](https://registry.modelcontextprotocol.io/) — **publish at product launch**, not before public signup is ready.
+
+---
 
 ## Resources
 
-- [Full MCP Documentation](https://paperoffice.ai/en/developer/mcp/)
-- [Postman Collection — paste into AI](https://api.paperoffice.ai/latest/docs/postman)
-- [AI Cookbook — Recipes & Prompts](https://paperoffice.ai/en/developer/cookbook/)
+- [Full MCP documentation](https://paperoffice.ai/en/developer/mcp/)
+- [Postman collection (live)](https://api.paperoffice.ai/latest/docs/postman)
+- [AI Cookbook](https://paperoffice.ai/en/developer/cookbook/)
 - [REST API](https://api.paperoffice.ai)
+
+---
 
 ## License
 
-Configuration files in this repository are provided under [MIT License](LICENSE). The PaperOffice AI platform and API are proprietary — see [paperoffice.ai](https://paperoffice.ai) for terms.
+Configuration files in this repository are [MIT](LICENSE). The PaperOffice AI platform and API are proprietary — see [paperoffice.ai](https://paperoffice.ai) for terms.
