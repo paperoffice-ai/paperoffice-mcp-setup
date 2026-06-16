@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "paperoffice": {
-      "url": "https://mcp.paperoffice.ai/mcp",
+      "url": "https://mcp.paperoffice.ai/cursor",
       "headers": {
         "Authorization": "Bearer YOUR_API_KEY"
       }
