@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
   "name": "io.github.paperoffice-ai/paperoffice-mcp",
-  "description": "PaperOffice AI — remote MCP server for document AI, headless DMS, OCR, IDP, workflows and agents. EU-hosted, OAuth 2.1 + Bearer. 350+ MCP tools at /mcp-full; 151 DMS tools at /dms and /claude.",
+  "description": "PaperOffice AI — remote MCP server for document AI, headless DMS, OCR, IDP, workflows and agents. EU-hosted, OAuth 2.1 or User/Group token (po_ut_ / po_gt_); po_sk_ blocked. 300+ API/MCP-Tools. Canonical DMS: /dms. Full surface: /mcp-full.",
   "version": "3.5.0",
   "status": "draft",
   "status_note": "Do not publish to registry.modelcontextprotocol.io until public app signup is live.",
@@ -15,55 +15,43 @@
       "type": "streamable-http",
       "url": "https://mcp.paperoffice.ai/claude",
       "name": "claude-dms",
-      "description": "Claude Desktop / Claude Code — alias of /dms, 151 headless DMS tools. OAuth 2.1 or Bearer."
+      "description": "Claude Desktop / Anthropic Directory — Documents Operations catalog (same as /dms). Separate URL for OAuth. OAuth 2.1 or User token (po_ut_ / po_gt_)."
     },
     {
       "type": "streamable-http",
       "url": "https://mcp.paperoffice.ai/dms",
       "name": "dms",
-      "description": "Canonical headless DMS — 151 tools (CRUD, capture, workflow, signatures, schema)."
+      "description": "Canonical headless DMS — CRUD, capture, workflow, signatures, schema."
     },
     {
       "type": "streamable-http",
       "url": "https://mcp.paperoffice.ai/cursor",
       "name": "cursor",
-      "description": "Cursor IDE — 37 read-safe tools."
+      "description": "Cursor IDE — read-safe profile (no accidental deletes)."
     },
     {
       "type": "streamable-http",
       "url": "https://mcp.paperoffice.ai/openai",
       "name": "openai",
-      "description": "ChatGPT / OpenAI MCP — Document AI + Workflow AI (~112 tools)."
+      "description": "ChatGPT / OpenAI Apps — Documents Operations catalog (same as /dms). OAuth 2.1 or User token (po_ut_ / po_gt_)."
     },
     {
       "type": "streamable-http",
-      "url": "https://mcp.paperoffice.ai/mcp-fast",
-      "name": "fast",
-      "description": "25 essential tools for strict client tool budgets."
+      "url": "https://mcp.paperoffice.ai/grok",
+      "name": "grok",
+      "description": "Grok custom connector — Documents Operations catalog (same as /dms). OAuth 2.1 or User token (po_ut_ / po_gt_)."
     },
     {
       "type": "streamable-http",
       "url": "https://mcp.paperoffice.ai/mcp",
       "name": "read-only",
-      "description": "37 core read tools — same scope as /cursor."
+      "description": "Read-only profile — same scope as /cursor."
     },
     {
       "type": "streamable-http",
       "url": "https://mcp.paperoffice.ai/mcp-full",
       "name": "full",
-      "description": "Complete MCP surface — 350+ tools."
-    },
-    {
-      "type": "streamable-http",
-      "url": "https://mcp.paperoffice.ai/mcp-document-ai",
-      "name": "document-ai",
-      "description": "Lighter Document AI module (~95 tools)."
-    },
-    {
-      "type": "streamable-http",
-      "url": "https://mcp.paperoffice.ai/mcp-workflow-ai",
-      "name": "workflow-ai",
-      "description": "Workflow AI module (~56 tools)."
+      "description": "Complete MCP surface — 300+ API/MCP-Tools."
     }
   ],
   "authentication": {
@@ -77,9 +65,7 @@
     }
   },
   "metadata": {
-    "api_rest_endpoints": 357,
-    "mcp_tools_full": 350,
-    "mcp_tools_dms": 151,
+    "api_mcp_tools_claim": "300+",
     "hosting": "EU Tier III (Spain + Germany)",
     "documentation": "https://paperoffice.ai/en/developer/mcp/",
     "llms_txt": "https://paperoffice.ai/llms.txt",
