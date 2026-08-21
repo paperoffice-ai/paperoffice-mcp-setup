@@ -3,7 +3,7 @@
     "paperoffice": {
       "url": "https://mcp.paperoffice.ai/mcp",
       "headers": {
-        "Authorization": "Bearer YOUR_API_KEY",
+        "Authorization": "Bearer po_ut_...",
         "X-MCP-Toolsets": "document-ai,workflow-ai"
       }
     }
