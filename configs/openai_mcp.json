@@ -3,7 +3,7 @@
     "paperoffice": {
       "url": "https://mcp.paperoffice.ai/openai",
       "headers": {
-        "Authorization": "Bearer YOUR_API_KEY"
+        "Authorization": "Bearer po_ut_..."
       }
     }
   }
