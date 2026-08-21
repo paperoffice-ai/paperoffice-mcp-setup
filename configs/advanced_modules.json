@@ -1,21 +1,15 @@
 {
   "mcpServers": {
-    "paperoffice-document-ai": {
-      "url": "https://mcp.paperoffice.ai/mcp-document-ai",
+    "paperoffice-dms": {
+      "url": "https://mcp.paperoffice.ai/dms",
       "headers": {
-        "Authorization": "Bearer YOUR_API_KEY"
-      }
-    },
-    "paperoffice-workflow-ai": {
-      "url": "https://mcp.paperoffice.ai/mcp-workflow-ai",
-      "headers": {
-        "Authorization": "Bearer YOUR_API_KEY"
+        "Authorization": "Bearer po_ut_..."
       }
     },
     "paperoffice-full": {
       "url": "https://mcp.paperoffice.ai/mcp-full",
       "headers": {
-        "Authorization": "Bearer YOUR_API_KEY"
+        "Authorization": "Bearer po_ut_..."
       }
     }
   }
