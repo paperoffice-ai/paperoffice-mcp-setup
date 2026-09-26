@@ -63,7 +63,11 @@ Four real workflows with Claude — under 30 seconds each. Click a card for the 
 
 ### 1 · Auth
 
-Claude, ChatGPT and Grok start with **OAuth 2.1** (no token in the file). For Cursor, DMS, or as an alternative: a **User or Group token** (`po_ut_` / `po_gt_`) from **[app.paperoffice.ai](https://app.paperoffice.ai)**. `po_sk_` and `po_pk_` are blocked for MCP.
+You need a PaperOffice account — the free plan is enough to try everything here. No account yet? Create one at **[app.paperoffice.ai/en/register/](https://app.paperoffice.ai/en/register/)** (no credit card).
+
+Claude, ChatGPT and Grok start with **OAuth 2.1**: the client opens the PaperOffice sign-in, you approve, no token in any file. For Cursor, DMS, or as an alternative: sign in at [app.paperoffice.ai](https://app.paperoffice.ai), open **Account → API** and create a **User token** (`po_ut_`) or a **Group token** (`po_gt_`, limited to the workspaces of one group). `po_sk_` and `po_pk_` are blocked for MCP.
+
+Questions or something not working: [Help & FAQ](https://help.paperoffice.ai/) · [Support](https://paperoffice.ai/en/support/) · [Issues](https://github.com/paperoffice-ai/paperoffice-mcp-setup/issues).
 
 ### 2 · Paste one URL into your client
 
