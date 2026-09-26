@@ -1,80 +1,72 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.paperoffice-ai/paperoffice-mcp",
-  "description": "PaperOffice AI — remote MCP server for document AI, headless DMS, OCR, IDP, workflows and agents. EU-hosted, OAuth 2.1 or User/Group token (po_ut_ / po_gt_); po_sk_ blocked. 300+ API/MCP-Tools. Canonical DMS: /dms. Full surface: /mcp-full.",
+  "title": "PaperOffice AI",
+  "description": "Document AI and headless DMS: OCR, IDP, search, workflows, signatures. EU-hosted, OAuth 2.1.",
   "version": "3.5.0",
-  "status": "draft",
-  "status_note": "Do not publish to registry.modelcontextprotocol.io until public app signup is live.",
   "websiteUrl": "https://paperoffice.ai/en/developer/mcp/",
   "repository": {
     "url": "https://github.com/paperoffice-ai/paperoffice-mcp-setup",
     "source": "github"
   },
+  "icons": [
+    {
+      "src": "https://paperoffice.ai/images/logos/paperoffice_ai_logo.svg",
+      "mimeType": "image/svg+xml",
+      "theme": "light"
+    }
+  ],
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://mcp.paperoffice.ai/claude",
-      "name": "claude-dms",
-      "description": "Claude Desktop / Anthropic Directory — Documents Operations without TTS. OAuth 2.1 or User token (po_ut_ / po_gt_)."
+      "url": "https://mcp.paperoffice.ai/dms"
     },
     {
       "type": "streamable-http",
-      "url": "https://mcp.paperoffice.ai/dms",
-      "name": "dms",
-      "description": "Canonical headless DMS — CRUD, capture, workflow, signatures, schema."
+      "url": "https://mcp.paperoffice.ai/cursor"
     },
     {
       "type": "streamable-http",
-      "url": "https://mcp.paperoffice.ai/cursor",
-      "name": "cursor",
-      "description": "Cursor / Windsurf — same Documents Operations catalog as /dms (including TTS)."
+      "url": "https://mcp.paperoffice.ai/claude"
     },
     {
       "type": "streamable-http",
-      "url": "https://mcp.paperoffice.ai/chatgpt",
-      "name": "chatgpt",
-      "description": "ChatGPT connector — Directory without TTS, OTP/unlock. Business documents only. OAuth 2.1 or User token (po_ut_ / po_gt_)."
+      "url": "https://mcp.paperoffice.ai/chatgpt"
     },
     {
       "type": "streamable-http",
-      "url": "https://mcp.paperoffice.ai/openai",
-      "name": "openai",
-      "description": "Alias of /chatgpt."
+      "url": "https://mcp.paperoffice.ai/grok"
     },
     {
       "type": "streamable-http",
-      "url": "https://mcp.paperoffice.ai/grok",
-      "name": "grok",
-      "description": "Grok custom connector — Documents Operations catalog (same as /dms). OAuth 2.1 or User token (po_ut_ / po_gt_)."
-    },
-    {
-      "type": "streamable-http",
-      "url": "https://mcp.paperoffice.ai/mcp",
-      "name": "read-only",
-      "description": "Slim IDE subset — not the Documents Operations catalog."
-    },
-    {
-      "type": "streamable-http",
-      "url": "https://mcp.paperoffice.ai/mcp-full",
-      "name": "full",
-      "description": "Complete MCP surface — 300+ API/MCP-Tools."
+      "url": "https://mcp.paperoffice.ai/mcp-full"
     }
   ],
-  "authentication": {
-    "methods": ["oauth2", "bearer"],
-    "bearer": {
-      "header": "Authorization",
-      "prefix": "Bearer "
-    },
-    "oauth": {
-      "authorizationServer": "https://mcp.paperoffice.ai"
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "lanes": {
+        "https://mcp.paperoffice.ai/dms": "Canonical Documents Operations catalog (14 tools + discovery). Default for generic MCP clients such as Claude Code, VS Code, Cline.",
+        "https://mcp.paperoffice.ai/cursor": "Same catalog as /dms, tuned for Cursor and Windsurf. Also shipped as the paperoffice Cursor Marketplace plugin.",
+        "https://mcp.paperoffice.ai/claude": "Anthropic Directory lane (Claude Desktop, claude.ai): business documents, no TTS.",
+        "https://mcp.paperoffice.ai/chatgpt": "ChatGPT connector lane: 5 core tools + 4 discovery tools. Alias: /openai.",
+        "https://mcp.paperoffice.ai/grok": "Grok custom connector lane, same catalog as /dms.",
+        "https://mcp.paperoffice.ai/mcp-full": "Complete surface, 300+ API/MCP tools, for power users and agents."
+      },
+      "authentication": {
+        "oauth2": "OAuth 2.1 with Client ID Metadata Documents; discovery at https://mcp.paperoffice.ai/.well-known/oauth-protected-resource/{lane}",
+        "bearer": "Authorization: Bearer <po_ut_… user token | po_gt_… group token>. System keys (po_sk_) and publishable keys (po_pk_) are rejected."
+      },
+      "discovery_tools": ["po_mcp_tools_search", "po_mcp_tools_schema", "po_mcp_tools_call_read", "po_mcp_tools_call_write"],
+      "effect_markers": ["READ-ONLY.", "WRITES DATA.", "DESTRUCTIVE."],
+      "hosting": "EU Tier III data centers (Spain, Germany), own hardware, no third-party AI subprocessors",
+      "documentation": {
+        "mcp": "https://paperoffice.ai/en/developer/mcp/",
+        "llms_txt": "https://api.paperoffice.ai/latest/docs/llms.txt",
+        "cookbook": "https://github.com/paperoffice-ai/cookbook",
+        "setup_configs": "https://github.com/paperoffice-ai/paperoffice-mcp-setup"
+      },
+      "signup": "https://app.paperoffice.ai/en/register/",
+      "server_release": "R260926.0859"
     }
-  },
-  "metadata": {
-    "api_mcp_tools_claim": "300+",
-    "hosting": "EU Tier III (Spain + Germany)",
-    "documentation": "https://paperoffice.ai/en/developer/mcp/",
-    "llms_txt": "https://paperoffice.ai/llms.txt",
-    "api_llms_txt": "https://api.paperoffice.ai/latest/docs/llms.txt"
   }
 }
