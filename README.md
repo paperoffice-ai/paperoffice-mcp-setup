@@ -79,11 +79,11 @@ Claude, ChatGPT and Grok start with **OAuth 2.1** (no token in the file). For Cu
 }
 ```
 
-`/claude`, `/openai` and `/grok` share the **Documents Operations** catalog with `/dms` (separate URLs for OAuth resource paths).
+`/dms`, `/cursor` and `/grok` share the **Documents Operations** catalog (including TTS). `/claude` is Directory without TTS. `/chatgpt` (alias `/openai`) is the ChatGPT connector (Directory without TTS, OTP/unlock).
 
-**Full headless DMS** (`po_ut_` / `po_gt_`) — [`configs/dms_mcp.json`](configs/dms_mcp.json) → `/dms`. Same catalog as `/claude`.
+**Full headless DMS** (`po_ut_` / `po_gt_`) — [`configs/dms_mcp.json`](configs/dms_mcp.json) → `/dms`. Same catalog as `/cursor` and `/grok`.
 
-**ChatGPT / Grok** (OAuth 2.1, no key in file) — `/openai` or `/grok` ([`configs/openai_mcp.json`](configs/openai_mcp.json), [`configs/grok_mcp.json`](configs/grok_mcp.json)). `po_ut_` / `po_gt_` remains an alternative for `/openai`.
+**ChatGPT / Grok** (OAuth 2.1, no key in file) — `/chatgpt` (alias `/openai`) or `/grok` ([`configs/openai_mcp.json`](configs/openai_mcp.json), [`configs/grok_mcp.json`](configs/grok_mcp.json)). `po_ut_` / `po_gt_` remains an alternative for `/chatgpt`.
 
 **Everything** (300+ MCP tools across every module) — [`configs/mcp_full.json`](configs/mcp_full.json) → `/mcp-full`.
 
@@ -96,28 +96,29 @@ That's it — your AI now works with your documents.
 ## Choose your scope — you decide, not your client
 
 **Any client can use any URL.** The paths below are convenience profiles, not limits:
-go full from day one, or narrow the surface for tool-limited clients or read-safety.
+go full from day one, or pick Directory / ChatGPT policy surfaces when a catalog requires it.
 
 | I want… | URL | Surface | Good for |
 |---------|-----|---------|----------|
 | **Everything** | `https://mcp.paperoffice.ai/mcp-full` | **300+** | Power users, agents, migration |
 | **Documents Operations** | `https://mcp.paperoffice.ai/dms` | **300+** | Canonical DMS URL |
-| **Claude Directory URL** | `https://mcp.paperoffice.ai/claude` | same as `/dms` | Claude Desktop / Anthropic Directory |
-| **ChatGPT / OpenAI** | `https://mcp.paperoffice.ai/openai` | same as `/dms` | ChatGPT Apps SDK |
+| **Cursor / Windsurf** | `https://mcp.paperoffice.ai/cursor` | same as `/dms` | IDE — full Documents Operations including TTS |
 | **Grok** | `https://mcp.paperoffice.ai/grok` | same as `/dms` | Grok custom connector |
-| **Read-safe (no deletes)** | `https://mcp.paperoffice.ai/cursor` | subset of 300+ | Cursor / Windsurf while coding |
-| **Read-only default** | `https://mcp.paperoffice.ai/mcp` | subset of 300+ | Same read-safe scope as `/cursor` |
+| **Claude Directory URL** | `https://mcp.paperoffice.ai/claude` | Directory without TTS | Claude Desktop / Anthropic Directory |
+| **ChatGPT** | `https://mcp.paperoffice.ai/chatgpt` | Directory without TTS, OTP/unlock | ChatGPT Apps SDK |
+| **ChatGPT alias** | `https://mcp.paperoffice.ai/openai` | same as `/chatgpt` | Legacy ChatGPT URL |
+| **Slim IDE subset** | `https://mcp.paperoffice.ai/mcp` | subset of 300+ | Read-safe default for tool-limited IDEs |
 
 **Client shortcuts:**
-`https://mcp.paperoffice.ai/claude` = same Documents Operations catalog as `/dms` ·
-`https://mcp.paperoffice.ai/openai` = same Documents Operations catalog as `/dms` ·
+`https://mcp.paperoffice.ai/cursor` = same Documents Operations catalog as `/dms` ·
 `https://mcp.paperoffice.ai/grok` = same Documents Operations catalog as `/dms` ·
-`https://mcp.paperoffice.ai/mcp` = same read-safe scope as `/cursor`.
+`https://mcp.paperoffice.ai/claude` = Directory without TTS ·
+`https://mcp.paperoffice.ai/chatgpt` = ChatGPT connector (alias `https://mcp.paperoffice.ai/openai`) ·
+`https://mcp.paperoffice.ai/mcp` = slim IDE subset.
 
 > **Why scopes at all?** Fewer tools = faster, more accurate tool-selection by the model,
-> and some clients enforce a tool-count cap. A read-safe profile (`/cursor`) prevents
-> accidental deletes while coding. None of this limits what PaperOffice can do — switch
-> to `/mcp-full` anytime for media, CRM and telephony.
+> and some clients enforce a tool-count cap. `/mcp` is the slim IDE subset.
+> None of this limits what PaperOffice can do — switch to `/mcp-full` anytime for media, CRM and telephony.
 
 Ready-made config files for every profile are in [`configs/`](configs/).
 
@@ -127,13 +128,24 @@ Ready-made config files for every profile are in [`configs/`](configs/).
 
 | Client | Suggested start | Want more? |
 |--------|-----------------|-----------|
-| **Claude Desktop** | `/claude` (OAuth, Documents Operations) | `/mcp-full` for media/CRM |
-| **Claude Cowork / Claude Code** | `/dms` (same catalog, `po_ut_` / `po_gt_`) | `/mcp-full` for all modules |
-| **Cursor / Windsurf** | `/cursor` (read-safe) | `/dms` or `/mcp-full` for write + everything |
-| **ChatGPT / OpenAI MCP** | `/openai` (OAuth) | `/mcp-full` for all 300+ |
-| **Grok** | `/grok` (OAuth, same surface as `/openai`) | `/mcp-full` for all 300+ |
+| **Claude Desktop** | `/claude` (OAuth, Directory without TTS) | `/mcp-full` for media/CRM |
+| **Claude Cowork / Claude Code** | `/dms` (Documents Operations, `po_ut_` / `po_gt_`) | `/mcp-full` for all modules |
+| **Cursor / Windsurf** | `/cursor` (same catalog as `/dms`) | `/mcp-full` for media/CRM |
+| **ChatGPT** | `/chatgpt` (OAuth, alias `/openai`) | `/mcp-full` for all 300+ |
+| **Grok** | `/grok` (OAuth, same catalog as `/dms`) | `/mcp-full` for all 300+ |
 
 These are starting points — change the URL whenever your task needs a different scope.
+
+### Marketplace plugins
+
+Prefer a one-click install? The same server is packaged as a plugin for two marketplaces:
+
+| Marketplace | Repository | Endpoint |
+|-------------|------------|----------|
+| **Cursor Marketplace** | [paperoffice-ai/paperoffice-cursor-plugin](https://github.com/paperoffice-ai/paperoffice-cursor-plugin) | `/cursor` — token set as a plugin variable, never in the repo |
+| **xAI Plugin Marketplace (Grok Build)** | [paperoffice-ai/paperoffice-grok-plugin](https://github.com/paperoffice-ai/paperoffice-grok-plugin) | `/grok` — OAuth 2.1 on first connection |
+
+ChatGPT and Claude do not need a repository: connect the `/chatgpt` or `/claude` URL directly, or install PaperOffice from their app directories once listed.
 
 ---
 
