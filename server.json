@@ -15,7 +15,7 @@
       "type": "streamable-http",
       "url": "https://mcp.paperoffice.ai/claude",
       "name": "claude-dms",
-      "description": "Claude Desktop / Anthropic Directory — Documents Operations catalog (same as /dms). Separate URL for OAuth. OAuth 2.1 or User token (po_ut_ / po_gt_)."
+      "description": "Claude Desktop / Anthropic Directory — Documents Operations without TTS. OAuth 2.1 or User token (po_ut_ / po_gt_)."
     },
     {
       "type": "streamable-http",
@@ -27,13 +27,19 @@
       "type": "streamable-http",
       "url": "https://mcp.paperoffice.ai/cursor",
       "name": "cursor",
-      "description": "Cursor IDE — read-safe profile (no accidental deletes)."
+      "description": "Cursor / Windsurf — same Documents Operations catalog as /dms (including TTS)."
+    },
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.paperoffice.ai/chatgpt",
+      "name": "chatgpt",
+      "description": "ChatGPT connector — Directory without TTS, OTP/unlock. Business documents only. OAuth 2.1 or User token (po_ut_ / po_gt_)."
     },
     {
       "type": "streamable-http",
       "url": "https://mcp.paperoffice.ai/openai",
       "name": "openai",
-      "description": "ChatGPT / OpenAI Apps — Documents Operations catalog (same as /dms). OAuth 2.1 or User token (po_ut_ / po_gt_)."
+      "description": "Alias of /chatgpt."
     },
     {
       "type": "streamable-http",
@@ -45,7 +51,7 @@
       "type": "streamable-http",
       "url": "https://mcp.paperoffice.ai/mcp",
       "name": "read-only",
-      "description": "Read-only profile — same scope as /cursor."
+      "description": "Slim IDE subset — not the Documents Operations catalog."
     },
     {
       "type": "streamable-http",
