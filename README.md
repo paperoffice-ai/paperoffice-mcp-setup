@@ -151,6 +151,19 @@ Prefer a one-click install? The same server is packaged as a plugin for two mark
 
 ChatGPT and Claude do not need a repository: connect the `/chatgpt` or `/claude` URL directly, or install PaperOffice from their app directories once listed.
 
+### Official MCP Registry
+
+PaperOffice is published in the [official MCP Registry](https://registry.modelcontextprotocol.io/v0/servers?search=paperoffice) as **`io.github.paperoffice-ai/paperoffice-mcp`** — the manifest is [`server.json`](server.json) in this repository. Clients and directories that read the registry (VS Code, Glama, PulseMCP and others) find the six lanes there without any manual entry.
+
+```bash
+# Claude Code
+claude mcp add --transport http paperoffice https://mcp.paperoffice.ai/dms
+```
+
+### Agent Skills
+
+The MCP server supplies the tools; [paperoffice-ai/paperoffice-skills](https://github.com/paperoffice-ai/paperoffice-skills) supplies the procedures — five `SKILL.md` files (API integration, invoice extraction, OCR, documents, tool discovery) that load as a Claude Code plugin, a claude.ai skill upload, or inside the Cursor plugin.
+
 ---
 
 ## What you can do
