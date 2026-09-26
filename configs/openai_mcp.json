@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "paperoffice": {
-      "url": "https://mcp.paperoffice.ai/openai",
+      "url": "https://mcp.paperoffice.ai/chatgpt",
       "headers": {
         "Authorization": "Bearer po_ut_..."
       }
