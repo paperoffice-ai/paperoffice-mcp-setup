@@ -11,7 +11,7 @@ Claude, Claude Cowork, Cursor, ChatGPT, Grok or Windsurf. No SDK, no boilerplate
 
 [![Model Context Protocol](https://img.shields.io/badge/Model_Context_Protocol-ready-2563eb)](https://paperoffice.ai/en/developer/mcp/)
 [![MCP tools](https://img.shields.io/badge/MCP_tools-300%2B-7c3aed)](https://paperoffice.ai/en/developer/mcp/)
-[![Hosting](https://img.shields.io/badge/Hosting-EU_Tier_III-009e60)](https://paperoffice.ai/en/company/security/)
+[![Hosting](https://img.shields.io/badge/Hosting-EU_(Navarra%2C_Spain)-009e60)](https://paperoffice.ai/en/company/datacenter/)
 [![Auth](https://img.shields.io/badge/Auth-OAuth_2.1_+_po_ut_-ea580c)](https://paperoffice.ai/en/developer/mcp/)
 
 **[Get started free →](https://app.paperoffice.ai)** · [Documentation](https://paperoffice.ai/en/developer/mcp/) · [Live Postman](https://api.paperoffice.ai/latest/docs/postman)
@@ -180,7 +180,7 @@ The MCP server supplies the tools; [paperoffice-ai/paperoffice-skills](https://g
 
 ## Why PaperOffice
 
-- **EU-sovereign** — own Tier III data centres in Spain & Germany. GDPR-aligned, no mandatory US cloud.
+- **EU-sovereign** — own data center in the EU (Navarra, Spain). GDPR-aligned, no mandatory US cloud.
 - **Zero-shot IDP** — extraction without template training, powered by specialized LLMs.
 - **Pay-per-use** — transparent credits, no per-seat lock-in.
 - **API-first** — 300+ API/MCP-Tools via REST or MCP. MCP uses OAuth 2.1 or a User token (po_ut_ / po_gt_) — see [Postman](https://api.paperoffice.ai/latest/docs/postman).
