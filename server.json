@@ -3,7 +3,7 @@
   "name": "io.github.paperoffice-ai/paperoffice-mcp",
   "title": "PaperOffice AI",
   "description": "Document AI and headless DMS: OCR, IDP, search, workflows, signatures. EU-hosted, OAuth 2.1.",
-  "version": "3.5.0",
+  "version": "3.6.0",
   "websiteUrl": "https://paperoffice.ai/en/developer/mcp/",
   "repository": {
     "url": "https://github.com/paperoffice-ai/paperoffice-mcp-setup",
@@ -39,6 +39,10 @@
     },
     {
       "type": "streamable-http",
+      "url": "https://mcp.paperoffice.ai/muse"
+    },
+    {
+      "type": "streamable-http",
       "url": "https://mcp.paperoffice.ai/mcp-full"
     }
   ],
@@ -48,17 +52,27 @@
         "https://mcp.paperoffice.ai/dms": "Canonical Documents Operations catalog (14 tools + discovery). Default for generic MCP clients such as Claude Code, VS Code, Cline.",
         "https://mcp.paperoffice.ai/cursor": "Same catalog as /dms, tuned for Cursor and Windsurf. Also shipped as the paperoffice Cursor Marketplace plugin.",
         "https://mcp.paperoffice.ai/claude": "Anthropic Directory lane (Claude Desktop, claude.ai): business documents, no TTS.",
-        "https://mcp.paperoffice.ai/chatgpt": "ChatGPT connector lane: 5 core tools + 4 discovery tools. Alias: /openai.",
-        "https://mcp.paperoffice.ai/grok": "Grok custom connector lane, same catalog as /dms.",
+        "https://mcp.paperoffice.ai/chatgpt": "ChatGPT connector lane: curated tool set for business documents and knowledge base articles, every tool listed individually (no discovery meta-tools). Alias: /openai.",
+        "https://mcp.paperoffice.ai/grok": "Grok connector lane: the curated /chatgpt tools, every tool listed individually, without the ChatGPT-only attachment upload.",
+        "https://mcp.paperoffice.ai/muse": "Meta Muse connector lane: the same curated tools as /grok.",
         "https://mcp.paperoffice.ai/mcp-full": "Complete surface, 300+ API/MCP tools, for power users and agents."
       },
       "authentication": {
         "oauth2": "OAuth 2.1 with Client ID Metadata Documents; discovery at https://mcp.paperoffice.ai/.well-known/oauth-protected-resource/{lane}",
         "bearer": "Authorization: Bearer <po_ut_… user token | po_gt_… group token>. System keys (po_sk_) and publishable keys (po_pk_) are rejected."
       },
-      "discovery_tools": ["po_mcp_tools_search", "po_mcp_tools_schema", "po_mcp_tools_call_read", "po_mcp_tools_call_write"],
-      "effect_markers": ["READ-ONLY.", "WRITES DATA.", "DESTRUCTIVE."],
-      "hosting": "EU Tier III data centers (Spain, Germany), own hardware, no third-party AI subprocessors",
+      "discovery_tools": [
+        "po_mcp_tools_search",
+        "po_mcp_tools_schema",
+        "po_mcp_tools_call_read",
+        "po_mcp_tools_call_write"
+      ],
+      "effect_markers": [
+        "READ-ONLY.",
+        "WRITES DATA.",
+        "DESTRUCTIVE."
+      ],
+      "hosting": "EU data center in Navarra (Spain), own hardware, no third-party AI subprocessors",
       "documentation": {
         "mcp": "https://paperoffice.ai/en/developer/mcp/",
         "llms_txt": "https://api.paperoffice.ai/latest/docs/llms.txt",
@@ -66,7 +80,7 @@
         "setup_configs": "https://github.com/paperoffice-ai/paperoffice-mcp-setup"
       },
       "signup": "https://app.paperoffice.ai/en/register/",
-      "server_release": "R260926.0859"
+      "server_release": "R261015.1325"
     }
   }
 }
