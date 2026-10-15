@@ -83,11 +83,11 @@ Questions or something not working: [Help & FAQ](https://help.paperoffice.ai/) �
 }
 ```
 
-`/dms`, `/cursor` and `/grok` share the **Documents Operations** catalog (including TTS). `/claude` is Directory without TTS. `/chatgpt` (alias `/openai`) is the ChatGPT connector (Directory without TTS, OTP/unlock).
+`/dms` and `/cursor` share the **Documents Operations** catalog (including TTS). `/claude` is Directory without TTS. `/chatgpt` (alias `/openai`) lists a curated tool set for ChatGPT, every tool individually; `/grok` and `/muse` list the same tools except the ChatGPT-only attachment upload.
 
-**Full headless DMS** (`po_ut_` / `po_gt_`) — [`configs/dms_mcp.json`](configs/dms_mcp.json) → `/dms`. Same catalog as `/cursor` and `/grok`.
+**Full headless DMS** (`po_ut_` / `po_gt_`) — [`configs/dms_mcp.json`](configs/dms_mcp.json) → `/dms`. Same catalog as `/cursor`.
 
-**ChatGPT / Grok** (OAuth 2.1, no key in file) — `/chatgpt` (alias `/openai`) or `/grok` ([`configs/openai_mcp.json`](configs/openai_mcp.json), [`configs/grok_mcp.json`](configs/grok_mcp.json)). `po_ut_` / `po_gt_` remains an alternative for `/chatgpt`.
+**ChatGPT / Grok / Meta Muse** (OAuth 2.1, no key in file) — `/chatgpt` (alias `/openai`), `/grok` ([`configs/openai_mcp.json`](configs/openai_mcp.json), [`configs/grok_mcp.json`](configs/grok_mcp.json)) or `/muse`. These three list a curated tool set, every tool individually. `po_ut_` / `po_gt_` remains an alternative for `/chatgpt`.
 
 **Everything** (300+ MCP tools across every module) — [`configs/mcp_full.json`](configs/mcp_full.json) → `/mcp-full`.
 
@@ -107,15 +107,17 @@ go full from day one, or pick Directory / ChatGPT policy surfaces when a catalog
 | **Everything** | `https://mcp.paperoffice.ai/mcp-full` | **300+** | Power users, agents, migration |
 | **Documents Operations** | `https://mcp.paperoffice.ai/dms` | **300+** | Canonical DMS URL |
 | **Cursor / Windsurf** | `https://mcp.paperoffice.ai/cursor` | same as `/dms` | IDE — full Documents Operations including TTS |
-| **Grok** | `https://mcp.paperoffice.ai/grok` | same as `/dms` | Grok custom connector |
+| **Grok** | `https://mcp.paperoffice.ai/grok` | curated tool set: the `/chatgpt` tools without the attachment upload | Grok connector |
+| **Meta Muse** | `https://mcp.paperoffice.ai/muse` | same curated tools as `/grok` | Meta Muse connector |
 | **Claude Directory URL** | `https://mcp.paperoffice.ai/claude` | Directory without TTS | Claude Desktop / Anthropic Directory |
-| **ChatGPT** | `https://mcp.paperoffice.ai/chatgpt` | Directory without TTS, OTP/unlock | ChatGPT Apps SDK |
+| **ChatGPT** | `https://mcp.paperoffice.ai/chatgpt` | curated tool set, every tool listed individually | ChatGPT Apps SDK |
 | **ChatGPT alias** | `https://mcp.paperoffice.ai/openai` | same as `/chatgpt` | Legacy ChatGPT URL |
 | **Slim IDE subset** | `https://mcp.paperoffice.ai/mcp` | subset of 300+ | Read-safe default for tool-limited IDEs |
 
 **Client shortcuts:**
 `https://mcp.paperoffice.ai/cursor` = same Documents Operations catalog as `/dms` ·
-`https://mcp.paperoffice.ai/grok` = same Documents Operations catalog as `/dms` ·
+`https://mcp.paperoffice.ai/grok` = curated `/chatgpt` tools without the ChatGPT-only attachment upload ·
+`https://mcp.paperoffice.ai/muse` = Meta Muse connector, same tools as `/grok` ·
 `https://mcp.paperoffice.ai/claude` = Directory without TTS ·
 `https://mcp.paperoffice.ai/chatgpt` = ChatGPT connector (alias `https://mcp.paperoffice.ai/openai`) ·
 `https://mcp.paperoffice.ai/mcp` = slim IDE subset.
@@ -136,7 +138,7 @@ Ready-made config files for every profile are in [`configs/`](configs/).
 | **Claude Cowork / Claude Code** | `/dms` (Documents Operations, `po_ut_` / `po_gt_`) | `/mcp-full` for all modules |
 | **Cursor / Windsurf** | `/cursor` (same catalog as `/dms`) | `/mcp-full` for media/CRM |
 | **ChatGPT** | `/chatgpt` (OAuth, alias `/openai`) | `/mcp-full` for all 300+ |
-| **Grok** | `/grok` (OAuth, same catalog as `/dms`) | `/mcp-full` for all 300+ |
+| **Grok** | `/grok` (OAuth, curated tool set) | `/mcp-full` for all 300+ |
 
 These are starting points — change the URL whenever your task needs a different scope.
 
@@ -153,7 +155,7 @@ ChatGPT and Claude do not need a repository: connect the `/chatgpt` or `/claude`
 
 ### Official MCP Registry
 
-PaperOffice is published in the [official MCP Registry](https://registry.modelcontextprotocol.io/v0/servers?search=paperoffice) as **`io.github.paperoffice-ai/paperoffice-mcp`** — the manifest is [`server.json`](server.json) in this repository. Clients and directories that read the registry (VS Code, Glama, PulseMCP and others) find the six lanes there without any manual entry.
+PaperOffice is published in the [official MCP Registry](https://registry.modelcontextprotocol.io/v0/servers?search=paperoffice) as **`io.github.paperoffice-ai/paperoffice-mcp`** — the manifest is [`server.json`](server.json) in this repository. Clients and directories that read the registry (VS Code, Glama, PulseMCP and others) find the seven lanes there without any manual entry.
 
 ```bash
 # Claude Code
